@@ -2,7 +2,18 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "bee",
+				"type": "Text"
+			},
+			"inputfield": {
+				"__TYPE__": "FieldContent",
+				"value": "alike",
+				"type": "Text"
+			}
+		},
 		"items": []
 	}
 ]

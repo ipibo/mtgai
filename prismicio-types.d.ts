@@ -113,6 +113,31 @@ export type CardSelectorBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *QuestionBlock → Primary*
+ */
+export interface QuestionBlockSliceDefaultPrimary {
+  /**
+   * Title field in *QuestionBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: question_block.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * InputField field in *QuestionBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: question_block.primary.inputfield
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  inputfield: prismic.KeyTextField;
+}
+
+/**
  * Default variation for QuestionBlock Slice
  *
  * - **API ID**: `default`
@@ -121,7 +146,7 @@ export type CardSelectorBlockSlice = prismic.SharedSlice<
  */
 export type QuestionBlockSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<QuestionBlockSliceDefaultPrimary>,
   never
 >;
 
@@ -213,6 +238,21 @@ export interface TextBlockSliceDefaultPrimary {
 }
 
 /**
+ * Primary content in *TextBlock → Items*
+ */
+export interface TextBlockSliceDefaultItem {
+  /**
+   * information paragraph field in *TextBlock → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_block.items[].information_paragraph
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  information_paragraph: prismic.RichTextField;
+}
+
+/**
  * Default variation for TextBlock Slice
  *
  * - **API ID**: `default`
@@ -222,7 +262,7 @@ export interface TextBlockSliceDefaultPrimary {
 export type TextBlockSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<TextBlockSliceDefaultPrimary>,
-  never
+  Simplify<TextBlockSliceDefaultItem>
 >;
 
 /**
@@ -263,6 +303,7 @@ declare module "@prismicio/client" {
       CardSelectorBlockSliceVariation,
       CardSelectorBlockSliceDefault,
       QuestionBlockSlice,
+      QuestionBlockSliceDefaultPrimary,
       QuestionBlockSliceVariation,
       QuestionBlockSliceDefault,
       RichTextSlice,
@@ -271,6 +312,7 @@ declare module "@prismicio/client" {
       RichTextSliceDefault,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
+      TextBlockSliceDefaultItem,
       TextBlockSliceVariation,
       TextBlockSliceDefault,
     };

@@ -20,11 +20,18 @@ defineProps(
   >
     <!-- Placeholder component for text_block (variation: {{ slice.variation }})
     Slices -->
-    <div class="bg-black w-[400px] h-full rounded-lg flex flex-col ">
-      <div class="bg-gray-200 rounded-lg text-center py-2 m-2 drop-shadow-lg">
+    <div class="font-mono  h-full rounded-lg flex flex-col items-center  ">
+      <div class="bg-indigo-200 font-extrabold px-4 rounded-lg text-center py-2 m-4 drop-shadow-lg text-4xl drop-shadow-lg">
         {{ slice.primary.title[0].text }}
       </div>
-      <div class="m-4 bg-indigo-100 rounded-lg p-2 ">{{slice.primary.information[0].text}}</div>
+      <div v-for="item in slice.items" :key="item.text" class="font-thin max-w-screen-lg mx-4 my-2 bg-indigo-100 rounded-lg p-2 drop-shadow-lg ">
+      
+        {{item.information_paragraph[0].text}}
+      
+      </div>
+      
+
+      <!-- <PrismicRichText :field="item.information_paragraph" /> -->
     </div>
   </section>
 </template>
