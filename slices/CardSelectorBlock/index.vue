@@ -11,6 +11,15 @@ defineProps(
     "context",
   ])
 )
+
+const  handle = (e) =>{
+        if(e.key === "Enter"){
+            alert("Enter was just pressed.");
+        }
+
+        return false;
+    }
+
 const searchCard = async () => {
   console.log(cardName.value)
   foundCard.value = await useFetch(
@@ -35,11 +44,12 @@ const cardName = ref("")
       
       <div class="font-bold mb-2">Search for you card</div>
 
-      <div class="flex flex-row gap-2 mb-2">
+      <form class="flex flex-row gap-2 mb-2" @submit.prevent="searchCard">
         <input
           class="bg-white text-black drop-shadow-lg p-4 rounded-md"
           type="text"
           v-model="cardName"
+          onkeypress="handle"
         />
 
         <button
@@ -48,11 +58,11 @@ const cardName = ref("")
         >
           search
         </button>
-      </div>
+      </form>
 
       <div
         v-if="foundCard"
-        class="max-w-screen-sm p-4 rounded-md bg-indigo-200"
+        class="max-w-screen-sm p-4 rounded-md bg-indigo-200 flex flex-col items-center"
       >
         <div class="flex flex-row gap-2">
           <div>{{ foundCard.value.name }}</div>
