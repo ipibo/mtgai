@@ -16,9 +16,6 @@ const searchCard = async () => {
   foundCard.value = await useFetch(
     `https://api.scryfall.com/cards/named?fuzzy=${cardName.value}`
   ).then((res) => {
-    // console.log(res.data)
-    // console.log(res.data.value.image_uris.small)
-    // console.log(res.data.value.name)
     return res.data
   })
 }
@@ -67,7 +64,7 @@ const cardName = ref("")
           {{ foundCard.value.power }} /
           {{ foundCard.value.toughness }}
         </div>
-        <img :src="foundCard.value.image_uris.small" alt="" />
+        <img :src="foundCard.value.image_uris.normal" alt="" />
         <a :href="foundCard.value.scryfall_uri">Link to scryfall</a>
       </div>
     </div>
