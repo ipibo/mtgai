@@ -74,7 +74,7 @@ const cardName = ref("")
           {{ foundCard.value.power }} /
           {{ foundCard.value.toughness }}
         </div>
-        <img :src="foundCard.value.image_uris.normal" alt="" />
+        <img :src="foundCard.value.image_uris.small" alt="" />
         <a :href="foundCard.value.scryfall_uri">Link to scryfall</a>
       </div>
     </div>
