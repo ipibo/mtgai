@@ -21,6 +21,15 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxtjs/prismic'],
+  css: ['~/assets/css/main.css'],
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
 
   prismic: {
     endpoint: 'mtgai',

@@ -1,0 +1,16 @@
+{
+  "id": "answer_block",
+  "type": "SharedSlice",
+  "name": "AnswerBlock",
+  "description": "AnswerBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}
