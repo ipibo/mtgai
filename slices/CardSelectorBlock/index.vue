@@ -53,7 +53,7 @@ const cardName = ref("")
     :data-slice-variation="slice.variation"
   >
     <div class="font-mono flex flex-col mt-10 items-center">
-      <div class="font-bold mb-2">Search for you card</div>
+      <div class="font-bold mb-2">Search for your card</div>
 
       <form class="flex flex-row gap-2 mb-2" @submit.prevent="searchCard">
         <input
