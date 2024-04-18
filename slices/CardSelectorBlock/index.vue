@@ -12,19 +12,33 @@ defineProps(
   ])
 )
 
-const  handle = (e) =>{
-        if(e.key === "Enter"){
-            alert("Enter was just pressed.");
-        }
+const handle = (e) => {
+  if (e.key === "Enter") {
+    alert("Enter was just pressed.")
+  }
 
-        return false;
-    }
+  return false
+}
+
+const allCards = ref([])
+// const fs = require("fs")
+// const file = fs.createWriteStream("array.txt")
+// file.on("error", function (err) {
+//   /* error handling */
+// })
+// file.end()
 
 const searchCard = async () => {
   console.log(cardName.value)
   foundCard.value = await useFetch(
-    `https://api.scryfall.com/cards/named?fuzzy=${cardName.value}`
+    // `https://api.scryfall.com/cards/named?fuzzy=${cardName.value}`
+    `https://api.scryfall.com/cards/search?q=${cardName.value}`
   ).then((res) => {
+    console.log(res.data.value)
+    // res.data.value.data.forEach(function (v) {
+    //   file.write(v.join(", ") + "\n")
+    // })
+
     return res.data
   })
 }
@@ -38,10 +52,7 @@ const cardName = ref("")
     :data-slice-type="slice.slice_type"
     :data-slice-variation="slice.variation"
   >
-
-    
     <div class="font-mono flex flex-col mt-10 items-center">
-      
       <div class="font-bold mb-2">Search for you card</div>
 
       <form class="flex flex-row gap-2 mb-2" @submit.prevent="searchCard">
@@ -60,7 +71,14 @@ const cardName = ref("")
         </button>
       </form>
 
-      <div
+      <div v-if="foundCard">
+        <!-- {{ foundCard.value.data }} -->
+        <div v-for="card in foundCard.value.data" :key="card.id">
+          {{ card.name }}
+        </div>
+      </div>
+
+      <!-- <div
         v-if="foundCard"
         class="max-w-screen-sm p-4 rounded-md bg-indigo-200 flex flex-col items-center"
       >
@@ -76,7 +94,7 @@ const cardName = ref("")
         </div>
         <img :src="foundCard.value.image_uris.small" alt="" />
         <a :href="foundCard.value.scryfall_uri">Link to scryfall</a>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

@@ -9,9 +9,6 @@ const { data: page } = useAsyncData("index", () =>
 useHead({
   title: prismic.asText(page.value?.data.title),
 })
-
-
-
 </script>
 
 <template>
@@ -26,7 +23,5 @@ useHead({
     <!-- {{ card.image_uris.normal }} -->
 
     <!-- <img :src="card.image_uris.small" alt=""> -->
-
-  
   </div>
 </template>
